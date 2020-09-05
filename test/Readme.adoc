@@ -1,0 +1,66 @@
+= Tests
+
+Use this directory for your tests. 
+
+It should include::
+. Unit or integration tests that tests your program functionalities
+. Tests for the security bug. It should show the bug and fail.
+
+== Examples
+
+.test_flaskr.py
+[source,python]
+----
+# Guide: https://flask.palletsprojects.com/en/1.1.x/testing/
+import os
+import tempfile
+
+import pytest
+
+from flaskr import flaskr
+
+
+@pytest.fixture
+def client():
+    db_fd, flaskr.app.config['DATABASE'] = tempfile.mkstemp()
+    flaskr.app.config['TESTING'] = True
+
+    with flaskr.app.test_client() as client:
+        with flaskr.app.app_context():
+            flaskr.init_db()
+        yield client
+
+    os.close(db_fd)
+    os.unlink(flaskr.app.config['DATABASE'])
+----
+
+.test_security.js
+[source,javascript]
+----
+// Guide: https://jestjs.io/
+// Test for Integer Overflow
+const request = require('supertest');
+const { app, approval } = require('./app');
+
+describe('security', () => {
+    
+    it('Request to -500, should throw RangeError exception', async () => {
+        expect.assertions(1);
+        try {
+            approval(-500)
+        } catch (ex) {
+            expect(ex).toBeInstanceOf(RangeError);
+        }   
+    }); 
+
+    it('Int32bit maximum amount, should throw RangeError exception', async () => {
+
+        expect.assertions(1);
+        try {
+            approval(2147483647)
+        } catch (ex) {
+            expect(ex).toBeInstanceOf(RangeError);
+        }   
+    }); 
+}:;
+----
