@@ -4,6 +4,9 @@ FROM python:3.8.2-alpine as build
 MAINTAINER Your Name "youremail@domain.tld"
 
 RUN apk --update add build-base
+RUN apk add libffi-dev
+RUN apk add openssl-dev
+RUN apk add --no-cache libressl-dev musl-dev libffi-dev
 # Create app directory
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
