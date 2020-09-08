@@ -1,0 +1,2 @@
+FLASK_APP=vulnerable_app.py
+FLASK_ENV=development
