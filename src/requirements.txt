@@ -1,0 +1,9 @@
+Flask==1.1.2
+flask-wtf
+wheel
+flask-migrate
+flask-login
+email-validator
+python-dotenv
+gunicorn
+flask-bootstrap
