@@ -18,12 +18,12 @@ COPY src .
 
 FROM python:3.8.2-alpine
 ENV PYTHONUNBUFFERED 1
-ENV FLASK_APP main.py
+ENV FLASK_APP vulnerable_app.py
 ENV FLASK_ENV development
 # Create app directory
 WORKDIR /usr/src/app
 COPY --from=build /usr/src/app .
 COPY --from=build /root/.local /root/.local
 EXPOSE 8080
-# CMD [ "flask", "db", "upgrade" ]
+CMD [ "flask", "db", "upgrade" ]
 CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0"]
