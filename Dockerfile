@@ -13,6 +13,7 @@ WORKDIR /usr/src/app
 COPY src/requirements.txt .
 # Install app dependencies
 RUN pip install --no-cache-dir --user -r requirements.txt
+RUN pip install alembic
 
 COPY src .
 
@@ -25,5 +26,9 @@ WORKDIR /usr/src/app
 COPY --from=build /usr/src/app .
 COPY --from=build /root/.local /root/.local
 EXPOSE 8080
-CMD [ "flask", "db", "upgrade" ]
+#CMD [ "flask", "db", "upgrade" ]
+ENV PATH="/root/.local/bin/:${PATH}"
+WORKDIR /usr/src/app/migrations
+CMD [ "alembic", "upgrade", "head"]
+WORKDIR /usr/src/app
 CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0"]
