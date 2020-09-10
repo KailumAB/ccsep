@@ -31,7 +31,10 @@ EXPOSE 8080
 ENV PATH="/root/.local/bin/:${PATH}"
 # cd to migrations and run them
 WORKDIR /usr/src/app/migrations
-CMD [ "alembic", "upgrade", "head"]
+#CMD [ "alembic", "upgrade", "head"]
 # cd to app and run server
 WORKDIR /usr/src/app
-CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0"]
+#CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0"]
+COPY ./boot.sh /boot.sh
+RUN chmod +x /boot.sh
+ENTRYPOINT ["/boot.sh"]
