@@ -12,15 +12,15 @@ test:
 	docker run -it --rm $(APP) python manage.py test
 
 run:
-#docker-compose rm
 	docker-compose pull
-	docker-compose build --no-cache
-	docker-compose up -d --force-recreate
-#docker run -p 0.0.0.0:8000:8000/tcp -it --rm $(APP)
+	docker-compose build --no-cache db
+	docker-compose up -d --force-recreate db
+	docker-compose build --no-cache web
+	docker-compose up -d --force-recreate web
 
 clean:
+	docker-compose down -v
 	docker-compose rm
-	docker image rm $(APP)
 	docker system prune
 
 .PHONY: all test clean
