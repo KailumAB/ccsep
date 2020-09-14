@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request, Markup, escape
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, PostForm, SearchForm, AdminForm
+from app.forms import LoginForm, RegistrationForm, SearchForm, AdminForm
 from flask_login import current_user, login_user, login_required, logout_user
-from app.models import User, Post
+from app.models import User
 from werkzeug.urls import url_parse
 from sqlalchemy.sql import text
 from sqlalchemy.exc import OperationalError, ProgrammingError
@@ -56,26 +56,6 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-# @app.route("/explore", methods=["GET"])
-# @login_required
-# def explore():
-#     form = SearchForm()
-#     search_term = request.values.get("search")
-#     posts = Post.all_posts()
-#     filtered_posts = None
-#
-#     if search_term is not None:
-#         filtered_posts = None
-#         try:
-#             filtered_posts = db.session.query(Post).filter(text("body LIKE '%%%s%%'" % search_term)).all()
-#             #filtered_posts = db.session.query(Post).filter(Post.body.like(search_term)).all()
-#         except OperationalError as e:
-#             flash(str(e))
-#             return redirect(url_for("explore"))
-#
-#     if filtered_posts is None or filtered_posts == "" or search_term == "":
-#         return render_template("explore.html", title="Explore", form=form, posts=posts, search_term=None)
-#     return render_template("explore.html", title="Explore", form=form, posts=filtered_posts, search_term=Markup(escape(search_term)))
 
 @app.route("/admin", methods=["GET"])
 @login_required

@@ -1,6 +1,6 @@
 """Add details to user
 
-Revision ID: 56a7b72748e3
+Revision ID: 5d4231b8b67a
 Revises: 508d8dfd7e99
 Create Date: 2020-09-10 09:35:45.152471
 
@@ -11,7 +11,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision = '56a7b72748e3'
-down_revision = '508d8dfd7e99'
+down_revision = '5d4231b8b67a'
 branch_labels = None
 depends_on = None
 
