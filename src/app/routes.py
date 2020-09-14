@@ -90,5 +90,5 @@ def admin():
     fields.pop('password', None)
 
     if result is None or id == "" or search_term == "":
-        return render_template("admin.html", title="Explore", form=form, fields=fields, id_list=id_list, search_term=None)
-    return render_template("admin.html", title="Explore", form=form, fields=fields, id_list=id_list, search_term=Markup(escape(search_term)))
+        return render_template("admin.html", title="Admin", form=form, fields=fields, id_list=id_list, search_term=None)
+    return render_template("admin.html", title="Admin", form=form, fields=fields, id_list=id_list, search_term=Markup(escape(search_term)))
