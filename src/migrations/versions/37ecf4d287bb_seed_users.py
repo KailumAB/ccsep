@@ -10,6 +10,7 @@ import sqlalchemy as sa
 from datetime import date
 from sqlalchemy.sql import table, column
 from sqlalchemy import String, Integer, Date, DateTime
+from passlib.hash import bcrypt
 
 
 # revision identifiers, used by Alembic.
@@ -33,11 +34,11 @@ def upgrade():
     )
     op.bulk_insert(users,
         [
-            {'id':1, 'username':'John Smith', 'email': 'john@test.com', 'password': 'johnpw', 'dob': date(1998, 5, 27), 'postcode': 6031},
+            {'id':1, 'username':'John Smith', 'email': 'john@test.com', 'password': bcrypt.encrypt('johnpw'), 'dob': date(1998, 5, 27), 'postcode': 6031},
 
-            {'id':2, 'username':'Ed Williams', 'email': 'ed@test.com', 'password': 'edpw', 'dob': date(2000, 5, 27), 'postcode': 123123},
+            {'id':2, 'username':'Ed Williams', 'email': 'ed@test.com', 'password': bcrypt.encrypt('edpw'), 'dob': date(2000, 5, 27), 'postcode': 123123},
 
-            {'id':3, 'username':'Wendy Jones', 'email': 'wendy@test.com', 'password': 'wendypw', 'dob': date(2008, 8, 15), 'postcode': 4567},
+            {'id':3, 'username':'Wendy Jones', 'email': 'wendy@test.com', 'password': bcrypt.encrypt('wendypw'), 'dob': date(2008, 8, 15), 'postcode': 4567},
         ]
     )
 
