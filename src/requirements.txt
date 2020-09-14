@@ -9,3 +9,5 @@ gunicorn
 flask-bootstrap
 PyMySQL
 cryptography
+bcrypt
+passlib
