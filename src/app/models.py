@@ -3,6 +3,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from sqlalchemy.sql import text
 from sqlalchemy.exc import OperationalError
+from passlib.hash import bcrypt
 
 @login.user_loader
 def load_user(id):
