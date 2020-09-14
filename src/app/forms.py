@@ -28,11 +28,7 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError("Email already exists")
 
-class SearchForm(FlaskForm):
-    search = StringField("Search")
-    submit = SubmitField("Search")
 
 class AdminForm(FlaskForm):
-    search = StringField("Search")
     id = StringField("id")
     submit = SubmitField("submit")
