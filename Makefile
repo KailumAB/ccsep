@@ -9,7 +9,13 @@ build:
 	docker image prune -f
 
 test:
-	docker run -it --rm $(APP) python manage.py test
+	docker-compose pull
+	docker-compose build --no-cache db
+	docker-compose up -d --force-recreate db
+	docker-compose build --no-cache web
+	docker-compose up -d --force-recreate web
+	clear
+	docker-compose exec web python3 /usr/src/app/test.py
 
 run:
 	docker-compose pull
