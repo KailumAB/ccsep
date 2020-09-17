@@ -1,4 +1,4 @@
-# Based on code from Faraz, Vulnerable App
+# Based on code from Faraz, gitlab.com/secdim/lectures/secure-programming/lab-vm.git
 
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))

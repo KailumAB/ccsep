@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Based on code from Faraz, Vulnerable App
+# Based on code from Faraz, gitlab.com/secdim/lectures/secure-programming/lab-vm.git
 
 from flask import Flask
 app = Flask(__name__)
