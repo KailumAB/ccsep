@@ -80,12 +80,11 @@ def admin():
 
                 user_model = db.session.query(User).get(id).__dict__
 
+                user_model.pop('password', None)
+                user_model.pop('_sa_instance_state', None)
+
         except (OperationalError, ProgrammingError) as e:
             return redirect(url_for("admin"))
-
-    user_model.pop('password', None)
-    user_model.pop('_sa_instance_state', None)
-
 
     if id == None or user_model == None:
         return render_template("admin.html", title="Admin", form=form, fields=user_model, id_list=id_list)
