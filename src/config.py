@@ -1,3 +1,5 @@
+# Based on code from Faraz, Vulnerable App
+
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 

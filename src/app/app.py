@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Based on code from Faraz, Vulnerable App
+
 from flask import Flask
 app = Flask(__name__)
 

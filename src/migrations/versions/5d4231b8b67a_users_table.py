@@ -1,3 +1,5 @@
+# Based on code from Faraz, Vulnerable App
+
 """users table
 
 Revision ID: 5d4231b8b67a
