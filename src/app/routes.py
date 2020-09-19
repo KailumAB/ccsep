@@ -65,7 +65,7 @@ def admin():
     form = AdminForm()
     search_term = request.values.get("search")
     id = request.values.get("id")
-    engine = create_engine('mysql+pymysql://root:password@172.16.0.2:3306/demodb', echo=True)
+    engine = create_engine('mysql+pymysql://root:password@172.16.0.2:3306/demodb', echo=False)
     conn = engine.connect()
     result = None
     fields = {}
