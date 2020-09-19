@@ -1,3 +1,5 @@
+# Based on code from Faraz, gitlab.com/secdim/lectures/secure-programming/lab-vm.git
+
 from flask import render_template, flash, redirect, url_for, request, Markup, escape
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, AdminForm
@@ -63,7 +65,7 @@ def logout():
 def admin():
     form = AdminForm()
     id = request.values.get("id")
-    engine = create_engine('mysql+pymysql://root:password@172.16.0.2:3306/demodb', echo=True)
+    engine = create_engine('mysql+pymysql://root:password@172.16.0.2:3306/demodb', echo=False)
     conn = engine.connect()
     fields = {}
     id_list = None

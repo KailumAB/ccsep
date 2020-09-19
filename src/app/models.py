@@ -1,3 +1,5 @@
+# Based on code from Faraz, gitlab.com/secdim/lectures/secure-programming/lab-vm.git
+
 from app import db, login
 from datetime import datetime
 from flask_login import UserMixin

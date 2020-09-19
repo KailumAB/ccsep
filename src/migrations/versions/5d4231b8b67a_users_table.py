@@ -1,3 +1,5 @@
+# Based on code from Faraz, gitlab.com/secdim/lectures/secure-programming/lab-vm.git
+
 """users table
 
 Revision ID: 5d4231b8b67a

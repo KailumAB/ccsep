@@ -1,3 +1,5 @@
+# Based on code from Faraz, gitlab.com/secdim/lectures/secure-programming/lab-vm.git
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
