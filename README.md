@@ -6,7 +6,7 @@ Tests on master branch should fail on last test
 Test should all pass on patch branch
 
 ### Setting up site
-Run `make run` and visit localhost:5050, use `John Smith` and `johnpw` to login
+Run `make clean && make run` and visit localhost:5050, use `John Smith` and `johnpw` to login
 
 ### Exploiting the vulnerability
 Set up the site
@@ -19,6 +19,8 @@ Observe the regular response time
 Try with other characters to leak password for the given user
 
 ### Patching
+Switch to patch branch and set up site normally
+
 To patch this vulnerability, we query the user fields using the ORM and pop sensitive information
 
 ```
