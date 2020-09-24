@@ -17,3 +17,14 @@ Inject sql into the search field on `/admin` - `IF(SUBSTRING(password,1,1) = CHA
 Observe the regular response time
 
 Try with other characters to leak password for the given user
+
+### Patching
+To patch this vulnerability, we query the user fields using the ORM and pop sensitive information
+
+```
+        user_model = db.session.query(User).get(id).__dict__
+
+        user_model.pop('password', None)
+        user_model.pop('_sa_instance_state', None)
+
+```
