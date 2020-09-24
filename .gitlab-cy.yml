@@ -1,0 +1,12 @@
+image: docker:19.03.10
+
+services:
+  - docker:19.03.10-dind
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - make clean && make test

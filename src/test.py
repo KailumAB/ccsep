@@ -16,7 +16,7 @@ class FlaskTest(unittest.TestCase):
             password='johnpw'
         ), follow_redirects=True)
         status_code = response.status_code
-        assert b'Search' in response.data
+        self.assertEqual(status_code, 200)
 
     def test_admin_get_all_fields(self):
         tester = self.make_client()
@@ -48,15 +48,15 @@ class FlaskTest(unittest.TestCase):
         ), follow_redirects=True)
         later = datetime.datetime.now()
         time_delta = later - now
-        assert time_delta.seconds >= 5
+        assert time_delta.seconds <=1
 
-        now = datetime.datetime.now()
-        response = tester.get('/admin', data=dict(
-            search='IF(SUBSTRING(password,1,1) = CHAR(102), SLEEP(5), null)', # check if first letter is not e
-            id='2'
-        ), follow_redirects=True)
-        later = datetime.datetime.now()
-        time_delta = later - now
+        # now = datetime.datetime.now()
+        # response = tester.get('/admin', data=dict(
+        #     search='IF(SUBSTRING(password,1,1) = CHAR(102), SLEEP(5), null)', # check if first letter is not e
+        #     id='2'
+        # ), follow_redirects=True)
+        # later = datetime.datetime.now()
+        # time_delta = later - now
         assert time_delta.seconds <= 1
 
 if __name__ == '__main__':
