@@ -71,17 +71,21 @@ def admin():
     fields = {}
     id_list = None
 
+    # generate list of user ids that exist in database
     with engine.connect() as con:
         statement = text("""SELECT id FROM user ORDER BY id""")
 
         id_list = con.execute(statement).fetchall()
 
+    # if no search term then skip
     if search_term is not None and id is not None:
         try:
             with engine.connect() as con:
 
+                # Inject string into sql
                 statement = text("""SELECT %s FROM user WHERE id = %s""" % (search_term, id))
 
+                # Execute statement and convert to dict for easy access
                 result = con.execute(statement).fetchone()
                 for column, value in result.items():
                     fields = {**fields, **{column: value}}
@@ -91,6 +95,7 @@ def admin():
 
     fields.pop('password', None)
 
+    #Send user final html with data that we have retrieved
     if result is None or id == "" or search_term == "":
         return render_template("admin.html", title="Admin", form=form, fields=fields, id_list=id_list, search_term=None)
     return render_template("admin.html", title="Admin", form=form, fields=fields, id_list=id_list, search_term=Markup(escape(search_term)))
