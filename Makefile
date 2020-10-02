@@ -14,6 +14,7 @@ test:
 	docker-compose up -d --force-recreate db
 	docker-compose build --no-cache web
 	docker-compose up -d --force-recreate web
+	sleep 5
 	clear
 	docker-compose exec web python3 /usr/src/app/test.py
 
