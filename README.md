@@ -17,9 +17,10 @@ Inject sql into the search field on `/admin` - `IF(SUBSTRING(password,1,1) = CHA
 Observe the regular response time
 
 Try with other characters to leak password for the given user
+Passwords can be seen in seed in src/app/migrations/versions
 
 ### Patching
-Switch to patch branch and set up site normally
+Switch to patch branch and set up site normally as above
 
 To patch this vulnerability, we query the user fields using the ORM and pop sensitive information
 
