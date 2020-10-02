@@ -8,7 +8,7 @@ Test should all pass on patch branch
 ### Setting up site
 Run `make clean && make run` and visit localhost:5050, use `John Smith` and `johnpw` to login
 
-### Exploiting the vulnerability
+### Detecting/Exploiting the vulnerability
 Set up the site
 
 Inject sql into the search field on `/admin` - `IF(SUBSTRING(password,1,1) = CHAR(106), SLEEP(5), null)`
@@ -31,3 +31,8 @@ To patch this vulnerability, we query the user fields using the ORM and pop sens
         user_model.pop('_sa_instance_state', None)
 
 ```
+
+### Description
+This program is designed to be vulnerable to timing based blind SQL injection, the program utilises make file
+and docker/docker-compose to be as portable as possible. The program is built in python3 using the Flask framework
+together with SQLAlchemy and alembic.
